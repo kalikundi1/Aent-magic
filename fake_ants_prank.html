@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🪳 Ants on Your Screen!</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    .ant {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background-image: url('https://i.postimg.cc/L5M5WQjS/ant.png');
+      background-size: cover;
+      animation: move 15s linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        top: 100%;
+        left: calc(100% * var(--x));
+        transform: rotate(0deg);
+      }
+      100% {
+        top: -50px;
+        left: calc(100% * var(--x));
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const numAnts = 20;
+
+  for (let i = 0; i < numAnts; i++) {
+    const ant = document.createElement("div");
+    ant.classList.add("ant");
+    ant.style.setProperty('--x', Math.random());
+    ant.style.animationDuration = `${5 + Math.random() * 15}s`;
+    document.body.appendChild(ant);
+  }
+</script>
+
+</body>
+</html>
